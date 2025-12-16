@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - NewGen Store</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos específicos para página de produtos */
+        .card {
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card img {
+            max-height: 180px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+        
+        .card h3 {
+            min-height: 60px;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        
+        .descricao {
+            min-height: 60px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .preco {
+            margin: 15px 0;
+            font-size: 24px;
+        }
+        
+        .card .btn-comprar {
+            margin-top: 20px !important;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>NewGen</h1>
+        </div>
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="produtos.html">Produtos</a>
+            <a href="login.html">Login</a>
+            <a href="carrinho.html">Carrinho <span class="cart-counter">0</span></a>
+        </nav>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </header>
+    
+    <main>
+        <section class="produtos">
+            <h2>Tech Neon: Gamers e Futuro</h2>
+            <div class="grid">
+                <!-- Produto 1 -->
+                <div class="card">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_776754-MLA86534745350_062025-F.webp" alt="ASUS ROG Strix">
+                    <div class="card-content">
+                        <h3>ASUS ROG Strix G16 (2025)</h3>
+                        <p class="descricao">RTX 5070 • i9-14900HX • 32GB RAM</p>
+                        <p class="preco">R$ 10.499,00</p>
+                        <button class="btn-comprar" onclick="adicionarCarrinho(
+                            'ASUS ROG Strix G16 (2025)', 
+                            10499.00, 
+                            'https://http2.mlstatic.com/D_NQ_NP_2X_776754-MLA86534745350_062025-F.webp',
+                            'RTX 5070 • i9-14900HX • 32GB RAM'
+                        )">Comprar Agora</button>
+                    </div>
+                </div>
+
+                <!-- Produto 2 -->
+                <div class="card">
+                    <img src="https://down-br.img.susercontent.com/file/br-11134207-81z1k-mdx6n3qsaz28cc.webp" alt="MSI Titan">
+                    <div class="card-content">
+                        <h3>MSI Titan 18 HX</h3>
+                        <p class="descricao">RTX 5070 • Ryzen 9 9950X • 64GB RAM</p>
+                        <p class="preco">R$ 14.799,00</p>
+                        <button class="btn-comprar" onclick="adicionarCarrinho(
+                            'MSI Titan 18 HX', 
+                            14799.00, 
+                            'https://down-br.img.susercontent.com/file/br-11134207-81z1k-mdx6n3qsaz28cc.webp',
+                            'RTX 5070 • Ryzen 9 9950X • 64GB RAM'
+                        )">Comprar Agora</button>
+                    </div>
+                </div>
+
+                <!-- Produto 3 -->
+                <div class="card">
+                    <img src="https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/dell-client-products/notebooks/alienware-notebooks/ac16250/media-gallery/laptop-alienware-ac16250-gallery-6.psd?fmt=png-alpha&pscan=auto&scl=1&hei=402&wid=519&qlt=100,1&resMode=sharp2&size=519,402&chrss=full" alt="Razer Blade">
+                    <div class="card-content">
+                        <h3>Notebook Gamer Alienware 16 Aurora</h3>
+                        <p class="descricao">RTX™ 5050, GDDR7 de 8GB • Intel® Core™ 7</p>
+                        <p class="preco">R$ 12.999,00</p>
+                        <button class="btn-comprar" onclick="adicionarCarrinho(
+                            'Notebook Gamer Alienware 16 Aurora', 
+                            12999.00, 
+                            'https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/dell-client-products/notebooks/alienware-notebooks/ac16250/media-gallery/laptop-alienware-ac16250-gallery-6.psd?fmt=png-alpha&pscan=auto&scl=1&hei=402&wid=519&qlt=100,1&resMode=sharp2&size=519,402&chrss=full',
+                            'NVIDIA® GeForce RTX™ 5050, GDDR7 de 8GB • Intel® Core™ 7 240H (10-core, cache de 24MB, até 5.2 GHz)'
+                        )">Comprar Agora</button>
+                    </div>
+                </div>
+
+                <!-- Produto 4 -->
+                <div class="card">
+                    <img src="https://images0.kabum.com.br/produtos/fotos/sync_mirakl/549990/Placa-De-V-deo-Asus-TUF-Gaming-AMD-Radeon-RX-7900-XT-OC-20GB-GDDR6-320-Bits-TUF-RX7900XT-O20G-GAMING_1722623504_gg.jpg" alt="PC Gamer Montado">
+                    <div class="card-content">
+                        <h3>Placa De Vídeo Asus TUF Gaming AMD</h3>
+                        <p class="descricao">Radeon RX 7900 XT OC, 20GB, GDDR6</p>
+                        <p class="preco">R$ 7.475,90</p>
+                        <button class="btn-comprar" onclick="adicionarCarrinho(
+                            'Placa De Vídeo Asus TUF Gaming AMD', 
+                           7475.90, 
+                            'https://images0.kabum.com.br/produtos/fotos/sync_mirakl/549990/Placa-De-V-deo-Asus-TUF-Gaming-AMD-Radeon-RX-7900-XT-OC-20GB-GDDR6-320-Bits-TUF-RX7900XT-O20G-GAMING_1722623504_gg.jpg',
+                            'Radeon RX 7900 XT OC, 20GB, GDDR6'
+                        )">Comprar Agora</button>
+                    </div>
+                </div>
+
+                <!-- Produto 5 -->
+                <div class="card">
+                    <img src="https://t2.tudocdn.net/704555?w=646&h=284" alt="RTX 5090">
+                    <div class="card-content">
+                        <h3>NVIDIA RTX 5090</h3>
+                        <p class="descricao">24GB GDDR7 • Blackwell AI</p>
+                        <p class="preco">R$ 10.499,00</p>
+                        <button class="btn-comprar" onclick="adicionarCarrinho(
+                            'NVIDIA RTX 5090', 
+                            10499.00, 
+                            'https://t2.tudocdn.net/704555?w=646&h=284',
+                            '24GB GDDR7 • Blackwell AI'
+                        )">Comprar Agora</button>
+                    </div>
+                </div>
+
+                <!-- Produto 6 -->
+                <div class="card">
+                    <img src="https://t.ctcdn.com.br/YaOCJNKhDWY1AW8iI1BE-ECrkmU=/406x179:3530x2055/1024x576/smart/i814217.jpeg" alt="Intel i9">
+                    <div class="card-content">
+                        <h3>Intel Core i9-14900K</h3>
+                        <p class="descricao">24 Cores • 5.8GHz Boost</p>
+                        <p class="preco">R$ 3.299,00</p>
+                        <button class="btn-comprar" onclick="adicionarCarrinho(
+                            'Intel Core i9-14900K', 
+                            3299.00, 
+                            'https://t.ctcdn.com.br/YaOCJNKhDWY1AW8iI1BE-ECrkmU=/406x179:3530x2055/1024x576/smart/i814217.jpeg',
+                            '24 Cores • 5.8GHz Boost'
+                        )">Comprar Agora</button>
+                    </div>
+                </div>
+
+                <!-- Produto 7 -->
+                <div class="card">
+                    <img src="https://macmagazine.com.br/wp-content/uploads/2024/12/18-iPhone-17-Pro-Dual-Tone-Feature-1-1160x653.jpg.avif" alt="iPhone 17">
+                    <div class="card-content">
+                        <h3>iPhone 17 Pro</h3>
+                        <p class="descricao">A18 Pro • 256GB • Câmera 48MP</p>
+                        <p class="preco">R$ 7.199,00</p>
+                        <button class="btn-comprar" onclick="adicionarCarrinho(
+                            'iPhone 17 Pro', 
+                            7199.00, 
+                            'https://macmagazine.com.br/wp-content/uploads/2024/12/18-iPhone-17-Pro-Dual-Tone-Feature-1-1160x653.jpg.avif',
+                            'A18 Pro • 256GB • Câmera 48MP'
+                        )">Comprar Agora</button>
+                    </div>
+                </div>
+
+                <!-- Produto 8 -->
+                <div class="card">
+                    <img src="https://img.odcdn.com.br/wp-content/uploads/2025/07/galaxy-s25-ultra-1920x1080.jpg" alt="Galaxy S26">
+                    <div class="card-content">
+                        <h3>Samsung Galaxy S26 Ultra</h3>
+                        <p class="descricao">Snapdragon 8 Gen 5 • 512GB • S Pen</p>
+                        <p class="preco">R$ 6.999,00</p>
+                        <button class="btn-comprar" onclick="adicionarCarrinho(
+                            'Samsung Galaxy S26 Ultra', 
+                            6999.00, 
+                            'https://img.odcdn.com.br/wp-content/uploads/2025/07/galaxy-s25-ultra-1920x1080.jpg',
+                            'Snapdragon 8 Gen 5 • 512GB • S Pen'
+                        )">Comprar Agora</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 NewGen - Todos os direitos reservados</p>
+        <p>Email: contato@newgen.com.br | WhatsApp: (11) 99999-9999</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

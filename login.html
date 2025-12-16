@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login • NewGen Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+    <div class="logo"><h1>NewGen</h1></div>
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="login.html">Login</a>
+        <a href="carrinho.html">Carrinho <span class="cart-counter">0</span></a>
+    </nav>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+</header>
+
+
+    <main class="login-section">
+        <h2>Bem-vindo ao Futuro</h2>
+        <p>Entre com sua conta neon</p>
+
+        <div class="form-container">
+            <form onsubmit="fazerLogin(event)">
+                <input type="email" id="email-login" class="input-neon" placeholder="Email" required>
+                <input type="password" id="senha-login" class="input-neon" placeholder="Senha" required>
+                <button type="submit" class="btn-comprar">Entrar ✦</button>
+            </form>
+
+            <p style="margin-top: 20px; color: #aaa;">
+                Não tem conta? 
+                <a href="cadastro.html" style="color: #00ffff; text-decoration: none;">
+                    Criar uma conta nova
+                </a>
+            </p>
+        </div>
+    </main>
+   
+
+    <footer>
+        <p>© 2025 NewGen - Todos os direitos reservados</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

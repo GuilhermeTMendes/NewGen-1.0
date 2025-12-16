@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewGen Store - Loja Virtual Futurista</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div class="logo"><h1>NewGen</h1></div>
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="login.html">Login</a>
+        <a href="carrinho.html">Carrinho <span class="cart-counter">0</span></a>
+    </nav>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+</header>
+
+    <main>
+        <section class="vitrine">
+            <h2>Entre no Futuro da Tech</h2>
+            <p>A NewGen Store: Neon, Gamers e Inovação para a Gen Z. Entrega ultra-rápida no Brasil!</p>
+            <img src="https://i.pinimg.com/originals/8a/cf/f8/8acff8e587df623ec95f8313f9a88ae9.gif" alt="Cidade cyberpunk neon" class="banner">
+            <a href="produtos.html" class="btn-comprar">Explorar o Neon</a>
+        </section>
+
+     <!-- Na seção de promoções do index.html -->
+<section class="promocoes">
+    <h2>Promoções Imperdíveis - Black Friday 2025</h2>
+    <div class="grid-promo">
+        <div class="card-promo">
+            <img src="https://rog.asus.com/media/1764716747368.jpg" alt="RTX 5090">
+            <h3>GeForce RTX™ 5090 ROG Matrix 30 ANOS</h3>
+            <p class="preco-antigo">1 unidade disponivel</p>
+            <p class="preco">R$ 29.999,00</p>
+            <button class="btn-comprar" onclick="adicionarCarrinho(
+                'GeForce RTX™ 5090 ROG Matrix 30 ANOS', 
+                29999.00, 
+                'https://rog.asus.com/media/1764716747368.jpg',
+                'RTX 5090 - Edição especial 30 anos'
+            )">Compre Já</button>
+        </div>
+        <div class="card-promo">
+            <img src="https://t2.tudocdn.net/779484?w=1200&h=1200" alt="iPhone 17">
+            <h3>REDMAGIC 11 PRO - 20% OFF</h3>
+            <p class="preco-antigo">R$ 9.999,00</p>
+            <p class="preco">R$ 8.399,00</p>
+            <button class="btn-comprar" onclick="adicionarCarrinho(
+                'REDMAGIC 11 PRO', 
+                8399.00, 
+                'https://t2.tudocdn.net/779484?w=1200&h=1200',
+                'Smartphone Gamer - 20% OFF'
+            )">Compre Já</button>
+        </div>
+        <div class="card-promo">
+            <img src="https://http2.mlstatic.com/D_NQ_NP_2X_776754-MLA86534745350_062025-F.webp" alt="ASUS ROG">
+            <h3>ASUS ROG Strix - 30% OFF</h3>
+            <p class="preco-antigo">R$ 14.999,00</p>
+            <p class="preco">R$ 10.499,00</p>
+            <button class="btn-comprar" onclick="adicionarCarrinho(
+                'ASUS ROG Strix', 
+                10499.00, 
+                'https://http2.mlstatic.com/D_NQ_NP_2X_776754-MLA86534745350_062025-F.webp',
+                'Notebook Gamer - 30% OFF'
+            )">Compre Já</button>
+        </div>
+    </div>
+</section>
+    </main>
+
+  
+
+    <footer>
+        <p>© 2025 NewGen - Todos os direitos reservados</p>
+        <p>Email: contato@newgen.com.br | WhatsApp: (11) 99999-9999</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

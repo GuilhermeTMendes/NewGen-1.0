@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout • NewGen Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo"><h1>NewGen</h1></div>
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="produtos.html">Produtos</a>
+            <a href="login.html">Login</a>
+            <a href="carrinho.html">Carrinho <span class="cart-counter">0</span></a>
+        </nav>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </header>
+   
+  <main class="checkout-section">
+    <h2>Checkout • Finalize no Futuro</h2>
+
+    <div class="checkout-grid">
+        <div>
+            <h3>Endereço de Entrega</h3>
+            <div class="form-container" id="formEndereco">
+                <div class="input-group">
+                    <input type="text" class="input-neon" id="cep" placeholder="CEP" required 
+                           pattern="\d{5}-?\d{3}" title="Digite um CEP válido (00000-000)">
+                    <small class="error-message" id="cep-error"></small>
+                </div>
+                
+                <div class="input-group">
+                    <input type="text" class="input-neon" id="rua" placeholder="Rua / Av." required 
+                           minlength="3">
+                    <small class="error-message" id="rua-error"></small>
+                </div>
+                
+                <div class="input-group">
+                    <input type="text" class="input-neon" id="numero" placeholder="Número" required 
+                           pattern="\d+" title="Apenas números">
+                    <small class="error-message" id="numero-error"></small>
+                </div>
+                
+                <div class="input-group">
+                    <input type="text" class="input-neon" id="complemento" placeholder="Complemento (opcional)">
+                </div>
+                
+                <div class="input-group">
+                    <input type="text" class="input-neon" id="bairro" placeholder="Bairro" required 
+                           minlength="3">
+                    <small class="error-message" id="bairro-error"></small>
+                </div>
+                
+                <div class="input-group">
+                    <input type="text" class="input-neon" id="cidade" placeholder="Cidade" required 
+                           minlength="3">
+                    <small class="error-message" id="cidade-error"></small>
+                </div>
+                
+                <div class="input-group">
+                    <input type="text" class="input-neon" id="estado" placeholder="Estado (ex: SP)" required 
+                           pattern="[A-Z]{2}" title="Digite a sigla do estado (2 letras maiúsculas)" 
+                           maxlength="2">
+                    <small class="error-message" id="estado-error"></small>
+                </div>
+            </div>
+
+            <h3 style="margin-top:40px">Método de Pagamento</h3>
+            <div class="form-container">
+                <div class="pagamento-opcao selected" onclick="selecionarPagamento(this)" data-value="pix">
+                    PIX (5% OFF)
+                </div>
+                <div class="pagamento-opcao" onclick="selecionarPagamento(this)" data-value="credito">
+                    Cartão de Crédito (em até 12x)
+                </div>
+                <div class="pagamento-opcao" onclick="selecionarPagamento(this)" data-value="boleto">
+                    Boleto Bancário
+                </div>
+                <small class="error-message" id="pagamento-error"></small>
+            </div>
+        </div>
+
+        <div class="checkout-resumo">
+            <h3>Resumo do Pedido</h3>
+            <div id="resumo-itens"></div>
+            <div class="total-final" id="total-checkout">Total: R$ 0,00</div>
+            
+            <!-- Mensagem de validação -->
+            <div id="mensagem-validacao" style="display: none; background: rgba(255, 0, 85, 0.1); 
+                 padding: 15px; border-radius: 10px; margin: 20px 0; border: 2px solid #ff0055;">
+                <p style="color: #ff5555; margin: 0;">⚠️ Preencha todos os dados corretamente para finalizar a compra!</p>
+            </div>
+            
+            <button class="btn-comprar" id="btn-finalizar" style="width:100%; font-size:22px; padding:18px" 
+                    onclick="validarCheckout()">
+                Pagar Agora ✦
+            </button>
+            <p style="margin-top:20px; color:#aaa">Ou <a href="carrinho.html" style="color:#00ffff">voltar ao carrinho</a></p>
+        </div>
+    </div>
+</main>
+    <footer>
+        <p>© 2025 NewGen - Todos os direitos reservados</p>
+    </footer>
+
+    <script>
+        // Função para selecionar pagamento
+        function selecionarPagamento(elemento) {
+            document.querySelectorAll('.pagamento-opcao').forEach(e => e.classList.remove('selected'));
+            elemento.classList.add('selected');
+        }
+        
+        // Função para renderizar checkout
+        function renderizarCheckout() {
+            try {
+                const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+                const container = document.getElementById('resumo-itens');
+                const totalElement = document.getElementById('total-checkout');
+                let total = 0;
+                
+                container.innerHTML = '';
+                
+                if (carrinho.length === 0) {
+                    container.innerHTML = '<p style="color:#aaa; text-align:center; padding:20px;">Seu carrinho está vazio</p>';
+                    totalElement.textContent = 'Total: R$ 0,00';
+                } else {
+                    carrinho.forEach(item => {
+                        const subtotal = item.preco * item.quantidade;
+                        total += subtotal;
+                        container.innerHTML += `
+                            <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #333;">
+                                <p><strong>${item.quantidade}x ${item.nome}</strong></p>
+                                <p style="color:#aaa; font-size:14px; margin:5px 0;">${item.descricao || ''}</p>
+                                <p style="color:#00ffff; font-weight:bold;">R$ ${subtotal.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</p>
+                            </div>
+                        `;
+                    });
+                    
+                    totalElement.textContent = `Total: R$ ${total.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+                }
+                
+                // Atualizar contador
+                if (typeof atualizarContador === 'function') {
+                    atualizarContador();
+                }
+            } catch (error) {
+                console.error('Erro ao renderizar checkout:', error);
+                document.getElementById('resumo-itens').innerHTML = 
+                    '<p style="color:#ff5555; text-align:center;">Erro ao carregar checkout</p>';
+            }
+        }
+        
+        // Inicializar checkout
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Página checkout carregada');
+            renderizarCheckout();
+            
+            // Configurar botão hamburguer
+            const menuToggle = document.querySelector('.menu-toggle');
+            if (menuToggle) {
+                menuToggle.style.display = 'flex';
+            }
+        });
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

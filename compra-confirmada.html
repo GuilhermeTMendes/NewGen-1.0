@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra Confirmada • NewGen Store</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .confirmacao {
+            text-align: center;
+            padding: 100px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .checkmark {
+            font-size: 100px;
+            color: #00ff88;
+            margin: 30px 0;
+            text-shadow: 0 0 30px #00ff88;
+            animation: pulse-green 2s infinite;
+        }
+        
+        @keyframes pulse-green {
+            0% { text-shadow: 0 0 20px #00ff88; }
+            50% { text-shadow: 0 0 40px #00ff88; }
+            100% { text-shadow: 0 0 20px #00ff88; }
+        }
+        
+        .pedido-info {
+            background: rgba(20, 0, 40, 0.6);
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid #00ff88;
+            margin: 40px 0;
+            text-align: left;
+        }
+        
+        .pedido-info h3 {
+            color: #00ff88;
+            margin-bottom: 20px;
+        }
+        
+        .pedido-info p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><h1>NewGen</h1></div>
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="produtos.html">Produtos</a>
+            <a href="login.html">Login</a>
+            <a href="carrinho.html">Carrinho <span class="cart-counter">0</span></a>
+        </nav>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </header>
+   
+    <main class="confirmacao">
+        <div class="checkmark">✓</div>
+        <h2>Compra Confirmada!</h2>
+        <p style="font-size: 24px; color: #00ff88; margin: 20px 0;">Sua compra foi processada com sucesso! 🚀</p>
+        
+        <div class="pedido-info">
+            <h3>📦 Detalhes do Pedido</h3>
+            <p><strong>Número do Pedido:</strong> NG-<span id="numero-pedido">000001</span></p>
+            <p><strong>Data:</strong> <span id="data-pedido"></span></p>
+            <p><strong>Status:</strong> <span style="color:#00ff88;">Pagamento confirmado</span></p>
+            <p><strong>Previsão de entrega:</strong> 5-7 dias úteis</p>
+        </div>
+        
+        <p style="font-size: 18px; color: #aaa; margin: 30px 0;">
+            Você receberá um e-mail com todos os detalhes da compra.<br>
+            Acompanhe o status da sua entrega pela sua conta.
+        </p>
+        
+        <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 40px;">
+            <a href="index.html" class="btn-comprar" style="background: #00ff88; color: #000;">
+                Voltar à Loja
+            </a>
+            <a href="produtos.html" class="btn-comprar">
+                Continuar Comprando
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 NewGen - Todos os direitos reservados</p>
+        <p>Dúvidas? contato@newgen.com.br | WhatsApp: (11) 99999-9999</p>
+    </footer>
+
+    <script>
+        // Gerar número de pedido aleatório
+        document.getElementById('numero-pedido').textContent = 
+            'NG-' + Math.floor(100000 + Math.random() * 900000);
+        
+        // Formatar data atual
+        const data = new Date();
+        const options = { 
+            day: '2-digit', 
+            month: 'long', 
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        };
+        document.getElementById('data-pedido').textContent = 
+            data.toLocaleDateString('pt-BR', options);
+        
+        // Atualizar contador do carrinho
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof atualizarContador === 'function') {
+                atualizarContador();
+            }
+            
+            // Configurar botão hamburguer
+            const menuToggle = document.querySelector('.menu-toggle');
+            if (menuToggle) {
+                menuToggle.style.display = 'flex';
+            }
+        });
+    </script>
+    
+    <script src="script.js"></script>
+</body>
+</html>

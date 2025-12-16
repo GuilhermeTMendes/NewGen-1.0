@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Criar Conta • NewGen</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div class="logo"><h1>NewGen</h1></div>
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="login.html">Login</a>
+        <a href="carrinho.html">Carrinho <span class="cart-counter">0</span></a>
+    </nav>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+</header>
+
+<main class="login-section">
+  <h2>Criar Conta</h2>
+
+  <div class="form-container">
+    <form onsubmit="cadastrar(event)">
+      <input type="text" class="input-neon" placeholder="Nome completo" required>
+      <input type="email" class="input-neon" placeholder="Email" required>
+      <input type="password" id="senha-cadastro" class="input-neon" placeholder="Senha" required>
+      <input type="password" id="confirmar-senha" class="input-neon" placeholder="Confirmar senha" required>
+      <button type="submit" class="btn-comprar">Criar Conta</button>
+    </form>
+
+    <a href="login.html" class="toggle-form">
+      Já tenho conta
+    </a>
+  </div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
