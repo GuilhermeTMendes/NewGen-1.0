@@ -226,12 +226,12 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-aling: center;
+    text-align: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     width: 100%;
     max-width: 650px;
     min-height: 450px;
-    position: relative;
+    position: absolute;
 }
 
 .card:hover, .card-promo:hover {
@@ -830,5 +830,6 @@ footer {
     to { transform: rotate(360deg); }
 
 }
+
 
 
