@@ -225,6 +225,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     text-aling: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     width: 100%;
@@ -829,4 +830,5 @@ footer {
     to { transform: rotate(360deg); }
 
 }
+
 
